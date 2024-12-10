@@ -25,28 +25,36 @@
                         <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
                     </li>
                     @if (Route::has('login'))
-                        <nav class="-mx-3 flex flex-1 justify-end">
-                            @auth
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Dashboard</a>
-                                </li>
-                            @else
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">Register</a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="{{ route('login') }}">Login</a>
-                                </li>
-                            @endauth
-                        </nav>
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Dashboard</a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                            </li>
+                        @endauth
                     @endif
-
+                </ul>
             </div>
         </div>
     </nav>
 
+
     <main class="main mt-3">
         <div class="container">
+            <!-- @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif -->
             @yield('content')
         </div>
     </main>
